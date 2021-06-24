@@ -1,17 +1,13 @@
 const express = require('express')
 const app = express()
-
 const path = require('path')
 
-// app.use('/static', express.static(__dirname + '/public'))
-// app.use('/static', express.static(path.join(__dirname, 'public')))
-// app.use(express.static('public'))
-// app.use('/static', express.static('public'))
-app.use('/static', express.static(path.join(__dirname, '/public')))
-app.use('/styles', express.static(path.join(__dirname, 'public/stylesheet.css')))
-
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../index.html'))
+    res.sendFile(path.join(__dirname, '../public/index.html'))
+})
+
+app.get('/styles', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/stylesheet.css'))
 })
 
 const port = process.env.PORT || 5050
